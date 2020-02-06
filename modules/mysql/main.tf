@@ -136,11 +136,11 @@ resource "google_sql_user" "default" {
   password   = var.user_password == "" ? random_id.user-password.hex : var.user_password
   depends_on = [null_resource.module_depends_on, google_sql_database_instance.default]
 
-  lifecycle {
-    ignore_changes = [
-      password
-    ]
-  }
+  # lifecycle {
+  #   ignore_changes = [
+  #     password
+  #   ]
+  # }
 }
 
 resource "google_sql_user" "additional_users" {
