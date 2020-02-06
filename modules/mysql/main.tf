@@ -120,9 +120,9 @@ resource "google_sql_database" "additional_databases" {
 }
 
 resource "random_id" "user-password" {
-  keepers = {
-    name = google_sql_database_instance.default.name
-  }
+  # keepers = {
+  #   name = google_sql_database_instance.default.name
+  # }
 
   byte_length = 8
   depends_on  = [null_resource.module_depends_on, google_sql_database_instance.default]
