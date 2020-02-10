@@ -49,6 +49,12 @@ variable "zone" {
   type        = string
 }
 
+variable "availability_type" {
+  description = "This optional parameter specifies whether the instance should be set up for high availability (REGIONAL) or single zone (ZONAL)."
+  type        = string
+  default     = "ZONAL"
+}
+
 variable "activation_policy" {
   description = "The activation policy for the master instance. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`."
   type        = string

@@ -34,6 +34,7 @@ resource "google_sql_database_instance" "default" {
     tier                        = var.tier
     activation_policy           = var.activation_policy
     authorized_gae_applications = var.authorized_gae_applications
+    availability_type           = var.availability_type
     dynamic "backup_configuration" {
       for_each = [var.backup_configuration]
       content {
