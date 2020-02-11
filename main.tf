@@ -29,25 +29,14 @@ resource "google_sql_database_instance" "default" {
     dynamic "backup_configuration" {
       for_each = [var.backup_configuration]
       content {
-        # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
-        # which keys might be set in maps assigned here, so it has
-        # produced a comprehensive set here. Consider simplifying
-        # this after confirming which keys can be set in practice.
-
         binary_log_enabled = lookup(backup_configuration.value, "binary_log_enabled", null)
         enabled            = lookup(backup_configuration.value, "enabled", null)
-        location           = lookup(backup_configuration.value, "location", null)
         start_time         = lookup(backup_configuration.value, "start_time", null)
       }
     }
     dynamic "ip_configuration" {
-      for_each = [var.ip_configuration]
+      for_each = [local.ip_configurations[local.ip_configuration_enabled ? "enabled" : "disabled"]]
       content {
-        # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
-        # which keys might be set in maps assigned here, so it has
-        # produced a comprehensive set here. Consider simplifying
-        # this after confirming which keys can be set in practice.
-
         ipv4_enabled    = lookup(ip_configuration.value, "ipv4_enabled", null)
         private_network = lookup(ip_configuration.value, "private_network", null)
         require_ssl     = lookup(ip_configuration.value, "require_ssl", null)
@@ -62,6 +51,7 @@ resource "google_sql_database_instance" "default" {
         }
       }
     }
+
     dynamic "location_preference" {
       for_each = [var.location_preference]
       content {
