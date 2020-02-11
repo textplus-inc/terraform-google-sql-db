@@ -106,7 +106,7 @@ resource "google_sql_database_instance" "default" {
   }
 
   dynamic "replica_configuration" {
-      for_each = [local.replica_configurations[local.replica_configuration_enabled ? "enabled" : "disabled"]]
+    for_each = [local.replica_configurations[local.replica_configuration_enabled ? "enabled" : "disabled"]]
     content {
       # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
       # which keys might be set in maps assigned here, so it has
