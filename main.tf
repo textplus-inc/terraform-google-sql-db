@@ -14,6 +14,15 @@
  * limitations under the License.
  */
 
+locals {
+  ip_configuration_enabled = length(keys(var.ip_configuration)) > 0 ? true : false
+
+  ip_configurations = {
+    enabled  = var.ip_configuration
+    disabled = {}
+  }
+}
+
 resource "google_sql_database_instance" "default" {
   name                 = var.name
   project              = var.project
