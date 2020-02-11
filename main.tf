@@ -57,7 +57,7 @@ resource "google_sql_database_instance" "default" {
           content {
             expiration_time = lookup(authorized_networks.value, "expiration_time", null)
             name            = lookup(authorized_networks.value, "name", null)
-            value           = authorized_networks.value.value
+            value           = lookup(authorized_networks.value, "value", null)
           }
         }
       }
