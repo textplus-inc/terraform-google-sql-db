@@ -53,7 +53,7 @@ resource "google_sql_database_instance" "default" {
         require_ssl     = lookup(ip_configuration.value, "require_ssl", null)
 
         dynamic "authorized_networks" {
-          for_each = lookup(ip_configuration.value, "authorized_networks", [])
+          for_each = lookup(ip_configuration.value, "authorized_networks", null)
           content {
             expiration_time = lookup(authorized_networks.value, "expiration_time", null)
             name            = lookup(authorized_networks.value, "name", null)
