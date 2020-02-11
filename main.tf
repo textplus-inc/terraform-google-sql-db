@@ -153,4 +153,3 @@ resource "google_sql_user" "default" {
   host     = var.user_host
   password = var.user_password == "" ? random_id.user-password.hex : var.user_password
 }
-
