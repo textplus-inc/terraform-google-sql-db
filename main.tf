@@ -21,6 +21,12 @@ locals {
     enabled  = var.ip_configuration
     disabled = {}
   }
+  replica_configuration_enabled = length(keys(var.replica_configuration)) > 0 ? true : false
+
+  replica_configurations = {
+    enabled  = var.replica_configuration
+    disabled = {}
+  }
 }
 
 resource "google_sql_database_instance" "default" {
@@ -100,7 +106,7 @@ resource "google_sql_database_instance" "default" {
   }
 
   dynamic "replica_configuration" {
-    for_each = [var.replica_configuration]
+      for_each = [local.replica_configurations[local.replica_configuration_enabled ? "enabled" : "disabled"]]
     content {
       # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
       # which keys might be set in maps assigned here, so it has
