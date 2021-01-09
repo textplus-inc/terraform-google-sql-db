@@ -92,10 +92,9 @@ resource "google_sql_database_instance" "default" {
         update_track = lookup(maintenance_window.value, "update_track", null)
       }
     }
-    disk_size        = var.disk_size
-    disk_type        = var.disk_type
-    pricing_plan     = var.pricing_plan
-    replication_type = var.replication_type
+    disk_size    = var.disk_size
+    disk_type    = var.disk_type
+    pricing_plan = var.pricing_plan
     dynamic "database_flags" {
       for_each = var.database_flags
       content {
