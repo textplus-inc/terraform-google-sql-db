@@ -87,7 +87,6 @@ resource "google_sql_database_instance" "replicas" {
     disk_size              = var.read_replica_disk_size
     disk_type              = var.read_replica_disk_type
     pricing_plan           = var.read_replica_pricing_plan
-    replication_type       = var.read_replica_replication_type
     user_labels            = var.read_replica_user_labels
     dynamic "database_flags" {
       for_each = var.read_replica_database_flags
@@ -122,4 +121,3 @@ resource "google_sql_database_instance" "replicas" {
     delete = var.delete_timeout
   }
 }
-

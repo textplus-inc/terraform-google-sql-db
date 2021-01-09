@@ -74,7 +74,6 @@ resource "google_sql_database_instance" "failover-replica" {
     disk_size              = var.failover_replica_disk_size
     disk_type              = var.failover_replica_disk_type
     pricing_plan           = var.failover_replica_pricing_plan
-    replication_type       = var.failover_replica_replication_type
     user_labels            = var.failover_replica_user_labels
     dynamic "database_flags" {
       for_each = var.failover_replica_database_flags
@@ -109,4 +108,3 @@ resource "google_sql_database_instance" "failover-replica" {
     delete = var.delete_timeout
   }
 }
-

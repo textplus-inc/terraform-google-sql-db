@@ -247,12 +247,6 @@ variable "read_replica_pricing_plan" {
   default     = "PER_USE"
 }
 
-variable "read_replica_replication_type" {
-  description = "The replication type for read replica instances. Can be one of ASYNCHRONOUS or SYNCHRONOUS."
-  type        = string
-  default     = "SYNCHRONOUS"
-}
-
 variable "read_replica_database_flags" {
   description = "The database flags for the read replica instances. See [more details](https://cloud.google.com/sql/docs/mysql/flags)"
   type = list(object({
@@ -393,12 +387,6 @@ variable "failover_replica_pricing_plan" {
   description = "The pricing plan for the failover replica instance."
   type        = string
   default     = "PER_USE"
-}
-
-variable "failover_replica_replication_type" {
-  description = "The replication type for the failover replica instance. Can be one of ASYNCHRONOUS or SYNCHRONOUS."
-  type        = string
-  default     = "SYNCHRONOUS"
 }
 
 variable "failover_replica_database_flags" {
