@@ -25,10 +25,11 @@ locals {
 }
 
 resource "google_sql_database_instance" "default" {
-  project          = var.project_id
-  name             = var.name
-  database_version = var.database_version
-  region           = var.region
+  project             = var.project_id
+  name                = var.name
+  database_version    = var.database_version
+  region              = var.region
+  deletion_protection = false
 
   settings {
     tier                        = var.tier
