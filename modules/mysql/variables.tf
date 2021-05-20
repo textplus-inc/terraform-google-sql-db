@@ -24,6 +24,12 @@ variable "name" {
   description = "The name of the Cloud SQL resources"
 }
 
+variable "database_protection" {
+  description = "Enable or disable database protection setting"
+  type        = bool
+  default     = true
+}
+
 // required
 variable "database_version" {
   description = "The database version to use"

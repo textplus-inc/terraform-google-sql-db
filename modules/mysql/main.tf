@@ -29,7 +29,7 @@ resource "google_sql_database_instance" "default" {
   name                = var.name
   database_version    = var.database_version
   region              = var.region
-  deletion_protection = false
+  deletion_protection = var.deletion_protection
 
   settings {
     tier                        = var.tier
